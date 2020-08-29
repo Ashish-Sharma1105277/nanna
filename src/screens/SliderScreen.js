@@ -1,85 +1,157 @@
-import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, ScrollView, Image, FlatList } from 'react-native'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Button from '../components/Button'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const SliderScreen = () => {
-	return (
-		<View style={styles.container}>
-			<View style={styles.header}>
-				<Text style={styles.headerText}>Lorem Ipsum</Text>
-				<MCI name="arrow-right" color="#fff" size={25} />
-			</View>
-			<ScrollView>
-				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
-					<View style={styles.cardSlider}>
-						
-							
-								<View style={styles.activeCard}>
-									{/* <View style={styles.image}> */}
-									<Image
-										style={styles.image}
-										source={require('../assets/img/Mask.png')}></Image>
-									{/* </View> */}
-									<Text style={{ color: '#fff' }}>lorem ipsum</Text>
-									<Text style={{ color: '#fff' }}>Lorem, ipsum dolor.</Text>
-								</View>
-								<View style={styles.card}>
-									<Image
-										style={styles.image}
-										source={require('../assets/img/Mask.png')}></Image>
-									<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-									<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-								</View>
-								<View style={styles.card}>
-									<Image
-										style={styles.image}
-										source={require('../assets/img/Mask.png')}></Image>
-									<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-									<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-								</View>
-								<View style={styles.card}>
-									<Image
-										style={styles.image}
-										source={require('../assets/img/Mask.png')}></Image>
-									<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-									<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-								</View>
-								<View style={styles.card}>
-									<Image
-										style={styles.image}
-										source={require('../assets/img/Mask.png')}></Image>
-									<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-									<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-								</View>
-							
-						
+class SliderScreen extends Component {
+	constructor(props) {
+	  super(props);
+	  
+	  	this.state = {
+			sliderData: [
+				{
+					id: 1,
+					name: 'Lorem ipsum',
+					description: 'הפסקאות הסטנדרטיות של Lorem Ipsum שהיו בשימוש מאז המאה ה-16 משוחזרות בתחתית הדף לאלה שמעונייניםץ מקטעים 1.10.32 ו- 1.10.33 מתוך "de Finibus Bonorum et Malorum" של קיקרו משוחזרים גם כן בצורתן המקורית מלווים בגרסה האנגלית משנת 1914, שתורגם על ידי ה. רקהם.'
+					
+				},
+				{
+					id: 2,
+					name: 'Lorem ipsum',
+					description: 'זוהי עובדה מבוססת שדעתו של הקורא תהיה מוסחת על ידי טקטס קריא כאשר הוא יביט בפריסתו. המטרה בשימוש ב-Lorem Ipsum הוא שיש לו פחות או יותר תפוצה של אותיות, בניגוד למלל  ונותן חזות קריאה יותר.הרבה הוצאות מחשבים ועורכי דפי אישים כיום ב-Lorem Ipsum כטקסט ברירת המחדל שלהם, וחיפוש של יחשוף אתרים רבים בראשית דרכם.גרסאות רבות נוצרו במהל'
+				},
+				{   
+					id: 3,
+					name: 'Lorem ipsum',
+					description: 'דועה לקחה מגש של דפוס ועירבלה אותו כדי ליצור סוג של ספר דגימה. ספר זה שרד לא רק חמש מאות שנים אלא גם את הקפיצה לתוך ההדפסה האלקטרונית, ונותר כמו שהוא ביסודו. ספר זה הפך פופולרי יותר בשנות ה-60 עם ההוצאה לאור של גליון פונטי המכיל פסקאות של Lorem Ipsum. ועוד יותר לאחרונה עם פרסום תוכנות המחשב האישי כגון Aldus page maker שמכיל גרסאות של Lorem Ipsum.'
+				},
+			],
+			activeContent: {
+				id: 1,
+				name: 'Lorem ipsum',
+				description: 'הפסקאות הסטנדרטיות של Lorem Ipsum שהיו בשימוש מאז המאה ה-16 משוחזרות בתחתית הדף לאלה שמעונייניםץ מקטעים 1.10.32 ו- 1.10.33 מתוך "de Finibus Bonorum et Malorum" של קיקרו משוחזרים גם כן בצורתן המקורית מלווים בגרסה האנגלית משנת 1914, שתורגם על ידי ה. רקהם.'
+			}	
+		};
+	}
+	chat() {
+		this.props.Navigation.navigator('Chat')
+	}
+	videoSchedule() {
+		this.props.Navigation.navigator('Schedule')
+	}
+	
+	changeSliderActiveCard (item) {
+		this.setState({
+			activeContent: item
+		})
+	}
+	BackButton () {
+		this.props.Navigation.navigator('Home')
+	}
+	render () {
+		const {Navigation} = this.props.Navigation
+		return (
+			<View style={styles.container}>
+				<View style={styles.header}>
+					<Text style={styles.headerText}>Lorem Ipsum</Text>
+					<MCI 
+					name="arrow-right" 
+					color="#fff" 
+					size={25}
+					onPress={this.BackButton}
+					/>
+				</View>
+				<ScrollView>
+					<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+						<View style={styles.cardSlider}>
+							<FlatList
+								data={this.state.sliderData}
+								keyExtractor={(item) => Math.random().toString()}
+								horizontal={true}
+								showsHorizontalScrollIndicator={false}
+								initialNumToRender={10}
+								renderItem={({ item }) => (
+									<TouchableWithoutFeedback onPress={() => this.changeSliderActiveCard(item)}> 
+										<View style={item.id === this.state.activeContent.id ? styles.activeCard : styles.card}>
+											<Image
+												style={styles.image}
+												source={require('../assets/img/Mask.png')}></Image>
+											<Text style={{ color: '#fff' }}>lorem ipsum</Text>
+											<Text style={{ color: '#fff' }}>Lorem, ipsum dolor.</Text>
+										</View>
+									</TouchableWithoutFeedback>
+	
+								)}
+							/>
+						</View>
+
+
+						{/* <View style={styles.cardSlider}>
+							<View style={styles.activeCard}> */}
+								{/* <View style={styles.image}> */}
+								{/* <Image
+									style={styles.image}
+									source={require('../assets/img/Mask.png')}></Image> */}
+								{/* </View> */}
+								{/* <Text style={{ color: '#fff' }}>lorem ipsum</Text>
+								<Text style={{ color: '#fff' }}>Lorem, ipsum dolor.</Text>
+							</View>
+							<View style={styles.card}>
+								<Image
+									style={styles.image}
+									source={require('../assets/img/Mask.png')}></Image>
+								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
+								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
+							</View>
+							<View style={styles.card}>
+								<Image
+									style={styles.image}
+									source={require('../assets/img/Mask.png')}></Image>
+								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
+								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
+							</View>
+							<View style={styles.card}>
+								<Image
+									style={styles.image}
+									source={require('../assets/img/Mask.png')}></Image>
+								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
+								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
+							</View>
+							<View style={styles.card}>
+								<Image
+									style={styles.image}
+									source={require('../assets/img/Mask.png')}></Image>
+								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
+								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
+							</View>
+						</View> */}
+					</ScrollView>
+					<View style={styles.textContainer}>
+						<Text style={styles.mainText}>
+							{this.state.activeContent.description}
+						</Text>
 					</View>
 				</ScrollView>
-				<View style={styles.textContainer}>
-					<Text style={styles.mainText}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.
-					</Text>
+				<View style={styles.btnContainer}>
+					<Button
+						onPress={this.chat}
+						fontcolor="#000"
+						color="#38D6CA"
+						bwidth={300}
+						bheight={40}
+					/>
+					<Button
+						onPress={this.videoSchedule} 
+						fontcolor="#000"
+						color="#38D6CA" 
+						bwidth={300} 
+						bheight={40} 
+					/>
 				</View>
-			</ScrollView>
-			<View style={styles.btnContainer}>
-				<Button
-					onpressevent="chat"
-					fontcolor="#000"
-					color="#38D6CA"
-					bwidth={300}
-					bheight={40}
-				/>
-				<Button fontcolor="#000" color="#38D6CA" bwidth={300} bheight={40} />
 			</View>
-		</View>
-	)
+		)
+	}	
 }
 
 export default SliderScreen

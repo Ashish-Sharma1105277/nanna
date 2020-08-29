@@ -81,7 +81,7 @@ const Schedule = ({ navigation }) => {
 			<View style={styles.header}>
 				<Text style={styles.headerText}>Lorem Ipsum</Text>
 				<MCI
-					onPress={() => navigation.navigate('ProfileDetail')}
+					onPress={() => navigation.navigate('SliderScreen')}
 					name="arrow-right"
 					color="#fff"
 					size={25}

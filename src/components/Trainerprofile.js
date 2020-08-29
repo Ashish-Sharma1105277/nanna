@@ -13,7 +13,7 @@ import colors from '../constant/colors'
 import AppContext from '../context/Context'
 import { Dialog } from 'react-native-simple-dialogs'
 import Ion from 'react-native-vector-icons/Ionicons'
-const Trainerprofile = (props) => {
+const Trainerprofile = (props, {onPress}) => {
 	const navigation = useNavigation()
 	const [shoDialogue, setshoDialogue] = useState(false)
 	const data = [
@@ -27,6 +27,9 @@ const Trainerprofile = (props) => {
 			name: 'Lorem ipsum',
 		},
 	]
+	let trainerProfile = () => {
+		navigation.navigate('ProfileDetail')
+	}
 	return (
 		<View>
 			<Dialog
@@ -88,11 +91,13 @@ const Trainerprofile = (props) => {
 				initialNumToRender={10}
 				renderItem={({ item }) => (
 					<View style={[styles.brandIconsWrap]}>
-						<Image
-							style={styles.image}
-							source={require('../assets/img/Mask.png')}
-						/>
-						<Text style={[styles.brandName]}>{item.name}</Text>
+						<TouchableOpacity onPress={trainerProfile}>
+							<Image
+								style={styles.image}
+								source={require('../assets/img/Mask.png')}
+							/>
+							<Text style={[styles.brandName]}>{item.name}</Text>
+						</TouchableOpacity>	
 						<TouchableOpacity
 							onPress={() => setshoDialogue(true)}
 							style={styles.bttun}>

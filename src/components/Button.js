@@ -4,23 +4,25 @@ import { useNavigation } from '@react-navigation/native'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import colors from '../constant/colors'
 
-const Button = ({ text, color, bwidth, bheight, fontcolor, onpressevent }) => {
+const Button = ({ text, color, bwidth, bheight, fontcolor, onpressevent, onPress }) => {
 	const navigation = useNavigation()
 	return (
 		<TouchableOpacity
-			onPress={() => {
-				if (onpressevent == 'profiledetail') {
-					navigation.navigate('Profilesetup')
-				} else if (onpressevent == 'profile') {
-					navigation.navigate('Profile')
-				} else if (onpressevent == 'sliderscreen') {
-					navigation.navigate('SliderScreen')
-				} else if (onpressevent == 'chat') {
-					navigation.navigate('Chat')
-				} else if (onpressevent == 'schedule') {
-					navigation.navigate('Schedule')
-				}
-			}}>
+			// onPress={() => {
+			// 	if (onpressevent == 'profiledetail') {
+			// 		navigation.navigate('Profilesetup')
+			// 	} else if (onpressevent == 'profile') {
+			// 		navigation.navigate('Profile')
+			// 	} else if (onpressevent == 'sliderscreen') {
+			// 		navigation.navigate('SliderScreen')
+			// 	} else if (onpressevent == 'chat') {
+			// 		navigation.navigate('Chat')
+			// 	} else if (onpressevent == 'schedule') {
+			// 		navigation.navigate('Schedule')
+			// 	}
+			// }}
+			onPress={ onPress }
+			>
 			<View
 				style={[
 					styles.button,

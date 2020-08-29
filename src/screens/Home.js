@@ -1,70 +1,84 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { ImageBackground, View, Text, StyleSheet, Image } from 'react-native'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import Trainerprofile from '../components/Trainerprofile'
 
-const Home = ({ navigation }) => {
-	return (
-		<View style={styles.container}>
-			<Header></Header>
+class Home extends Component {
+	constructor(props) {
+	  super(props);
+	  
+	  this.state = {
+		showTrainer: false
+	  };
+	}
+    viewProfile() {
+		Navigation.navigator('Profile')
+	}
+	render() {
+		return (
+			<View style={styles.container}>
+				<Header></Header>
 
-			<ImageBackground
-				source={require('../assets/img/Group.png')}
-				style={styles.image}>
-				<View style={styles.box}>
-					<Image
-						style={styles.logo}
-						source={require('../assets/img/logo.png')}></Image>
-					<Text style={styles.boxText}>
-						Lorem Ipsum is simply dummy text of the printing and typesetting
-						industry. Lorem Ipsum has been the industry's standard dummy text
-					</Text>
-				</View>
-				<Trainerprofile></Trainerprofile>
-				<Button
-					fontcolor="#000"
-					color="#38D6CA"
-					bwidth={200}
-					bheight={40}></Button>
-			</ImageBackground>
+				<ImageBackground
+					source={require('../assets/img/Group.png')}
+					style={styles.image}>
+					<View style={styles.box}>
+						<Image
+							style={styles.logo}
+							source={require('../assets/img/logo.png')}></Image>
+						<Text style={styles.boxText}>
+							Lorem Ipsum is simply dummy text of the printing and typesetting
+							industry. Lorem Ipsum has been the industry's standard dummy text
+						</Text>
+					</View>
+					<Trainerprofile />
+					<Button
+						fontcolor="#000"
+						color="#38D6CA"
+						bwidth={200}
+						bheight={40}
+						onPress={this.viewProfile}
+						></Button>
+				</ImageBackground>
 
-			<View style={styles.footer}>
-				<View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-					<Button
-						fontcolor="#fff"
-						color="#C64F42"
-						bwidth={200}
-						bheight={40}></Button>
-					<Button
-						fontcolor="#fff"
-						color="#E8695C"
-						bwidth={150}
-						bheight={40}></Button>
-					<Button
-						fontcolor="#fff"
-						color="#EF678D"
-						bwidth={360}
-						bheight={40}></Button>
-					<Button
-						fontcolor="#fff"
-						color="#EF67B2"
-						bwidth={360}
-						bheight={40}></Button>
-					<Button
-						fontcolor="#fff"
-						color="#45E324"
-						bwidth={150}
-						bheight={40}></Button>
-					<Button
-						fontcolor="#fff"
-						color="#EDCD1A"
-						bwidth={200}
-						bheight={40}></Button>
+				<View style={styles.footer}>
+					<View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+						<Button
+							fontcolor="#fff"
+							color="#C64F42"
+							bwidth={200}
+							bheight={40}></Button>
+						<Button
+							fontcolor="#fff"
+							color="#E8695C"
+							bwidth={150}
+							bheight={40}></Button>
+						<Button
+							fontcolor="#fff"
+							color="#EF678D"
+							bwidth={360}
+							bheight={40}></Button>
+						<Button
+							fontcolor="#fff"
+							color="#EF67B2"
+							bwidth={360}
+							bheight={40}></Button>
+						<Button
+							fontcolor="#fff"
+							color="#45E324"
+							bwidth={150}
+							bheight={40}></Button>
+						<Button
+							fontcolor="#fff"
+							color="#EDCD1A"
+							bwidth={200}
+							bheight={40}></Button>
+					</View>
 				</View>
 			</View>
-		</View>
-	)
+		)
+    }
 }
 const styles = StyleSheet.create({
 	container: {

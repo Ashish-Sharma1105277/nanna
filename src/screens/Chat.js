@@ -9,7 +9,7 @@ const Chat = () => {
 			<View style={styles.header}>
 				<Text style={styles.headerText}>Lorem Ipsum</Text>
 				<MCI
-					onPress={() => navigation.navigate('ProfileDetail')}
+					onPress={() => navigation.navigate('SliderScreen')}
 					name="close"
 					size={25}
 				/>

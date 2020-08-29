@@ -1,49 +1,60 @@
 import React, { Component } from 'react'
 import {
-	ImageBackground,
 	View,
 	Text,
 	StyleSheet,
 	Image,
-	TextInput
+	TextInput,
+	KeyboardAvoidingView
 } from 'react-native'
 import Button from '../components/Button'
 import RNPickerSelect from 'react-native-picker-select'
-import Ion from 'react-native-vector-icons/Ionicons'
 import { Picker } from '@react-native-community/picker'
 
-const Profile = () => {
-	return (
-		<View style={styles.container}>
-			<ImageBackground
-				source={require('../assets/img/yellow.png')}
-				style={styles.image}>
-					<Image
-						style={{ marginTop: '15%' }}
-						source={require('../assets/img/logo.png')}></Image>
-					<Text style={styles.text}>Lorem Ipsum Is Dummy</Text>
-					<View style={{ marginTop: '15%' }}></View>
-					<TextInput value="Lorem" style={styles.input} />
-					<TextInput value="Lorem" style={styles.input} />
-					<View style={styles.input}>
+class Profile extends Component {
+	constructor(props) {
+	  super(props);
+	  
+	  this.state = {
+		username: '',
+		password: '',
+	  };
+	}
+	login = () => {
+		this.props.navigation.navigate('Profilesetup')
+	}
+	render() {
+		return (
+			<KeyboardAvoidingView behavior='padding' style={styles.container}>
+				<Image
+					style={styles.image}
+					source={require('../assets/img/logo.png')}></Image>
+				<Text style={styles.text}>Lorem Ipsum Is Dummy</Text>
+				<View style={styles.inner}>
+					<TextInput style={styles.input} value={this.state.username}
+         			 onChangeText={(username) => this.setState({ username })} placeholder='Email'/>
+					<TextInput style={styles.input} value={this.state.password}
+          			onChangeText={(password) => this.setState({ password })} placeholder='Password'/>
+					{/* <View style={styles.input}>
 						<RNPickerSelect
 							placeholder={{}}
 							onValueChange={(value) => console.log(value)}
 							items={[{ label: 'Football', value: 'football' }]}
 						/>
-					</View>
-
+					</View> */}
 					<View style={styles.footer}>
 						<Button
-							onpressevent="profiledetail"
+							onPress={this.login}
 							fontcolor="#000"
 							color="#38D6CA"
-							bwidth={300}
+							bwidth={350}
 							bheight={40}></Button>
 					</View>
-			</ImageBackground>
-		</View>
-	)
+				</View>
+			</KeyboardAvoidingView>	
+		)
+	}
+	
 }
 const styles = StyleSheet.create({
 	text: {
@@ -52,32 +63,33 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		flexDirection: 'column',
+		alignItems: 'center',
+    	justifyContent: 'flex-start',
+		backgroundColor: '#FFFDD2'
+		
 	},
 	footer: {
-		position: 'absolute',
-		bottom: 30,
-		alignSelf: 'center',
+		paddingTop: '50%'
 	},
 	image: {
-		flex: 1,
-		resizeMode: 'cover',
-
-		alignItems: 'center',
-		paddingBottom: 40,
+		marginTop: 20
 	},
 	input: {
 		height: 40,
-		width: '90%',
+		width: 350,
 		backgroundColor: '#FAFAFA',
 		borderRadius: 30,
 		marginTop: 20,
 		paddingRight: 10,
 		textAlign: 'right',
 		color: '#000',
+		
 	},
 	select: {
 		borderWidth: 1,
 	},
+	inner: {		
+		marginTop: '10%'
+	}
 })
 export default Profile
