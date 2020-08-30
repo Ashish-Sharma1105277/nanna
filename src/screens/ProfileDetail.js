@@ -4,12 +4,18 @@ import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Button from '../components/Button'
 
 const ProfileDetail = ({ navigation }) => {
+	chat = () => {
+		navigation.navigate('Chat')
+	}
+	videoSchedule = () => {
+		navigation.navigate('Schedule')
+	}
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
-				<Text style={styles.headerText}>Lorem Ipsum</Text>
+				<Text style={styles.headerText}>פרופיל מומחה</Text>
 				<MCI
-					onPress={() => navigation.navigate('Home')}
+					onPress={() => navigation.navigate('SliderScreen')}
 					name="close"
 					size={25}
 				/>
@@ -21,20 +27,20 @@ const ProfileDetail = ({ navigation }) => {
 							style={styles.photo}
 							source={require('../assets/img/Mask.png')}
 						/>
-						<Text style={styles.name}>Name Here</Text>
-						<Text style={{ color: 'gray' }}>Lorem ipsum dolor sit</Text>
+						<Text style={styles.name}>רוחמה אברהם</Text>
+						<Text style={{ color: 'gray' }}>יועצת הנקה ואכילה</Text>
 					</View>
 					<View style={styles.section}>
-						<Text style={styles.sectionTitle}>Lorem Ipsum</Text>
+						{/* <Text style={styles.sectionTitle}>Lorem Ipsum</Text> */}
 						<Text style={styles.sectionText}>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
-							illo earum necessitatibus voluptatum at. Quae dignissimos, vero
-							perspiciatis possimus fuga
+							
+הבינו שהביקורת העצמית והציפיות הגבוהות מעצמנו יוצרים מעגל של התעסקות עם השלילי. במקום לשמוח בדברים הטובים, לחגוג אותם וליהנות מהם, אנו עסוקים בלהתייסר על מה שלא יצא מושלם כפי שרצינו. פרפקציוניזם זה מתכון נהדר לחיים של חוסר שביעות רצון תמידי ודיכאון. די לטפח את התכונה הזאת ולהתגאות בה. די להעביר את זה לילדים שלנו. השתחררו מהצורך במושלמות והתחילו לחגוג את החיים.
+במקום לשמוח בדברים הטובים, לחגוג אותם וליהנות מהם, אנו עסוקים בלהתייסר על מה שלא יצא מושלם כפי שרצינו. פרפקציוניזם זה מתכון נהדר לחיים של במקום לשמוח בדברים הטובים, לחגוג אותם וליהנות מהם, אנו
 						</Text>
 					</View>
 
 					<View style={styles.section}>
-						<Text style={styles.sectionTitle}>Lorem Ipsum</Text>
+						<Text style={styles.sectionTitle}>מייעץ בנושאים</Text>
 						<View style={styles.chipContainer}>
 							<View style={styles.chip}></View>
 							<View style={styles.chip}></View>
@@ -44,7 +50,7 @@ const ProfileDetail = ({ navigation }) => {
 					</View>
 
 					<View style={styles.section}>
-						<Text style={styles.sectionTitle}>Lorem Ipsum</Text>
+						<Text style={styles.sectionTitle}>שעות עבודה</Text>
 						<View style={{ alignSelf: 'stretch' }}>
 							<View style={styles.option}>
 								<Text>19:00 - 19:30</Text>
@@ -61,18 +67,20 @@ const ProfileDetail = ({ navigation }) => {
 			</ScrollView>
 			<View style={styles.btnContainer}>
 				<Button
-					onpressevent="schedule"
+					onPress={chat}
 					fontcolor="#000"
 					color="#38D6CA"
 					bwidth={300}
 					bheight={40}
+					text="צ׳אט אונליין עם מומחה"
 				/>
 				<Button
-					onpressevent="chat"
+					onPress={videoSchedule}
 					fontcolor="#000"
 					color="#38D6CA"
 					bwidth={300}
 					bheight={40}
+					text="תאם שיחת וידאו עם המומחה"
 				/>
 			</View>
 		</View>

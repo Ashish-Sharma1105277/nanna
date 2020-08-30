@@ -33,7 +33,7 @@ const Button = ({ text, color, bwidth, bheight, fontcolor, onpressevent, onPress
 						color: fontcolor,
 					},
 				]}>
-				<Text style={{ color: fontcolor }}>Lorem Ipsum</Text>
+				<Text style={{ color: fontcolor }}>{text ? text : 'Lorem Ipsum'}</Text>
 			</View>
 		</TouchableOpacity>
 	)

@@ -6,12 +6,12 @@ import { I18nManager } from "react-native";
 const resources = {
   en: {
     translation: {
-      "app_name": "לורם איפסום"
+      "app_name": "צ׳אט נענע"
     }
   },
   he: {
     translation: {
-      "app_name": "Lorem Ipsum"
+      "app_name": "Chat Nene"
     }
   }
 };

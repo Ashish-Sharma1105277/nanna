@@ -28,8 +28,7 @@ class Home extends Component {
 							style={styles.logo}
 							source={require('../assets/img/logo.png')}></Image>
 						<Text style={styles.boxText}>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry's standard dummy text
+					. פרפקציוניזם זה מתכון נהדר לחיים של חוסר שביעות רצון תמידי ודיכאון. די לטפח את התכונה הזאת ולהתגאות בה. די להעביר את זה לילדים שלנו. השתחררו מהצורך במושלמות והתחילו לחגוג את החיים.
 						</Text>
 					</View>
 					<Trainerprofile />

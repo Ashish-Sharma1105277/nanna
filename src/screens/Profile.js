@@ -29,12 +29,12 @@ class Profile extends Component {
 				<Image
 					style={styles.image}
 					source={require('../assets/img/logo.png')}></Image>
-				<Text style={styles.text}>Lorem Ipsum Is Dummy</Text>
+				<Text style={styles.text}>הרשמה מהירה לנענע</Text>
 				<View style={styles.inner}>
 					<TextInput style={styles.input} value={this.state.username}
-         			 onChangeText={(username) => this.setState({ username })} placeholder='Email'/>
+         			 onChangeText={(username) => this.setState({ username })} placeholder='אימייל'/>
 					<TextInput style={styles.input} value={this.state.password}
-          			onChangeText={(password) => this.setState({ password })} placeholder='Password'/>
+          			onChangeText={(password) => this.setState({ password })} placeholder='סיסמא'/>
 					{/* <View style={styles.input}>
 						<RNPickerSelect
 							placeholder={{}}
@@ -48,7 +48,8 @@ class Profile extends Component {
 							fontcolor="#000"
 							color="#38D6CA"
 							bwidth={350}
-							bheight={40}></Button>
+							bheight={40}
+							text="טלפון"></Button>
 					</View>
 				</View>
 			</KeyboardAvoidingView>	

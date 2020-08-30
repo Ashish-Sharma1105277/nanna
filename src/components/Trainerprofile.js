@@ -18,17 +18,20 @@ const Trainerprofile = (props, {onPress}) => {
 	const [shoDialogue, setshoDialogue] = useState(false)
 	const data = [
 		{
-			name: 'Lorem ipsum',
+			name: 'ירי מסיקה',
+			desigantion:'יועצת עצבים וקריזות'
 		},
 		{
-			name: 'Lorem ipsum',
+			name: 'ירי מסיקה',
+			desigantion:'יועצת עצבים וקריזות'
 		},
 		{
-			name: 'Lorem ipsum',
+			name: 'ירי מסיקה',
+			desigantion:'יועצת עצבים וקריזות'
 		},
 	]
 	let trainerProfile = () => {
-		navigation.navigate('ProfileDetail')
+		navigation.navigate('SliderScreen')
 	}
 	return (
 		<View>
@@ -61,7 +64,8 @@ const Trainerprofile = (props, {onPress}) => {
 						style={{ marginLeft: 40 }}
 						source={require('../assets/img/family.png')}></Image>
 					<Text style={{ textAlign: 'center', marginTop: 20 }}>
-						Lorem Ipsum is simply dummy text of the printing
+					בכדי להנות מהתייעצות עם מומחים
+					עליך לעבור תהליך הרשמה מהיר
 					</Text>
 					<TouchableOpacity
 						onPress={() => {
@@ -78,7 +82,7 @@ const Trainerprofile = (props, {onPress}) => {
 									color: '#000',
 								},
 							]}>
-							<Text style={{ color: '#000' }}>Lorem Ipsum</Text>
+							<Text style={{ color: '#000' }}>הרשמה</Text>
 						</View>
 					</TouchableOpacity>
 				</View>
@@ -101,7 +105,7 @@ const Trainerprofile = (props, {onPress}) => {
 						<TouchableOpacity
 							onPress={() => setshoDialogue(true)}
 							style={styles.bttun}>
-							<Text style={styles.btntext}>Chat Now</Text>
+							<Text style={styles.btntext}>קבל תשובה</Text>
 						</TouchableOpacity>
 					</View>
 				)}

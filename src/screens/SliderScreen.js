@@ -13,7 +13,7 @@ class SliderScreen extends Component {
 				{
 					id: 1,
 					name: 'Lorem ipsum',
-					description: 'הפסקאות הסטנדרטיות של Lorem Ipsum שהיו בשימוש מאז המאה ה-16 משוחזרות בתחתית הדף לאלה שמעונייניםץ מקטעים 1.10.32 ו- 1.10.33 מתוך "de Finibus Bonorum et Malorum" של קיקרו משוחזרים גם כן בצורתן המקורית מלווים בגרסה האנגלית משנת 1914, שתורגם על ידי ה. רקהם.'
+					description: ' שלא יצא מושלם כפי שרצינו. פרפקציוניזם זה מתכון נהדר לחיים של חוסר שביעות רצון תמידי ודיכאון. די לטפח את התכונה הזאת ולהתגאות בה. די להעביר את זה לילדים שלנו. השתחררו מהצורך במושלמות והתחילו לחגוג את החיים.'
 					
 				},
 				{
@@ -34,11 +34,11 @@ class SliderScreen extends Component {
 			}	
 		};
 	}
-	chat() {
-		this.props.Navigation.navigator('Chat')
+	chat = () => {
+		this.props.navigation.navigate('Chat')
 	}
-	videoSchedule() {
-		this.props.Navigation.navigator('Schedule')
+	videoSchedule = () => {
+		this.props.navigation.navigate('Schedule')
 	}
 	
 	changeSliderActiveCard (item) {
@@ -46,15 +46,17 @@ class SliderScreen extends Component {
 			activeContent: item
 		})
 	}
-	BackButton () {
-		this.props.Navigation.navigator('Home')
+	BackButton = () => {
+		this.props.navigation.navigate('Home')
+	}
+	showPorfile = () => {
+		this.props.navigation.navigate('ProfileDetail')
 	}
 	render () {
-		const {Navigation} = this.props.Navigation
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={styles.headerText}>Lorem Ipsum</Text>
+					<Text style={styles.headerText}>תשובות מומחים</Text>
 					<MCI 
 					name="arrow-right" 
 					color="#fff" 
@@ -72,60 +74,20 @@ class SliderScreen extends Component {
 								showsHorizontalScrollIndicator={false}
 								initialNumToRender={10}
 								renderItem={({ item }) => (
-									<TouchableWithoutFeedback onPress={() => this.changeSliderActiveCard(item)}> 
+									<TouchableWithoutFeedback onPress={() => this.changeSliderActiveCard(item)}
+									onLongPress={()=> this.showPorfile()}
+									> 
 										<View style={item.id === this.state.activeContent.id ? styles.activeCard : styles.card}>
 											<Image
 												style={styles.image}
 												source={require('../assets/img/Mask.png')}></Image>
-											<Text style={{ color: '#fff' }}>lorem ipsum</Text>
-											<Text style={{ color: '#fff' }}>Lorem, ipsum dolor.</Text>
+											<Text style={{ color: '#fff' }}>ד׳׳ר ישראל ארצי</Text>
+											<Text style={{ color: '#fff' }}>רופא מחלקה איכילוב</Text>
 										</View>
 									</TouchableWithoutFeedback>
-	
 								)}
 							/>
 						</View>
-
-
-						{/* <View style={styles.cardSlider}>
-							<View style={styles.activeCard}> */}
-								{/* <View style={styles.image}> */}
-								{/* <Image
-									style={styles.image}
-									source={require('../assets/img/Mask.png')}></Image> */}
-								{/* </View> */}
-								{/* <Text style={{ color: '#fff' }}>lorem ipsum</Text>
-								<Text style={{ color: '#fff' }}>Lorem, ipsum dolor.</Text>
-							</View>
-							<View style={styles.card}>
-								<Image
-									style={styles.image}
-									source={require('../assets/img/Mask.png')}></Image>
-								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-							</View>
-							<View style={styles.card}>
-								<Image
-									style={styles.image}
-									source={require('../assets/img/Mask.png')}></Image>
-								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-							</View>
-							<View style={styles.card}>
-								<Image
-									style={styles.image}
-									source={require('../assets/img/Mask.png')}></Image>
-								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-							</View>
-							<View style={styles.card}>
-								<Image
-									style={styles.image}
-									source={require('../assets/img/Mask.png')}></Image>
-								<Text style={{ color: '#000000' }}>lorem ipsum</Text>
-								<Text style={{ color: '#000000' }}>Lorem, ipsum dolor.</Text>
-							</View>
-						</View> */}
 					</ScrollView>
 					<View style={styles.textContainer}>
 						<Text style={styles.mainText}>
@@ -140,13 +102,15 @@ class SliderScreen extends Component {
 						color="#38D6CA"
 						bwidth={300}
 						bheight={40}
+						text="צ׳אט אונליין עם מומחה"
 					/>
 					<Button
 						onPress={this.videoSchedule} 
 						fontcolor="#000"
 						color="#38D6CA" 
 						bwidth={300} 
-						bheight={40} 
+						bheight={40}
+						text="תאם שיחת וידאו עם המומחה" 
 					/>
 				</View>
 			</View>
