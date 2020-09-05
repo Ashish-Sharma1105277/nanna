@@ -6,6 +6,9 @@ import { Dialog } from 'react-native-simple-dialogs'
 
 const Schedule = ({ navigation }) => {
 	const [shoDialogue, setshoDialogue] = useState(false)
+	const [selectedTimeSlotIndex, setSelectedTimeSlotIndex] = useState(-1)
+	const [selectedTimeBlock, setSelectedTimeBlock] = useState(-1)
+
 	return (
 		<View style={styles.container}>
 			<Dialog
@@ -61,7 +64,7 @@ const Schedule = ({ navigation }) => {
 					<TouchableOpacity
 						onPress={() => {
 							setshoDialogue(false)
-							navigation.navigate('Home')
+							navigation.navigate('Chat')
 						}}>
 						<View
 							style={[
@@ -96,15 +99,59 @@ const Schedule = ({ navigation }) => {
 						return (
 							<View style={styles.section} key={i}>
 								<Text style={styles.sectionTitle}>Lorem Ipsum</Text>
-								<View style={styles.option}>
-									<Text>19:00 - 19:30</Text>
-								</View>
-								<View style={styles.option}>
-									<Text>19:00 - 19:30</Text>
-								</View>
-								<View style={styles.option}>
-									<Text>19:00 - 19:30</Text>
-								</View>
+								<TouchableOpacity onPress={() => {
+										setSelectedTimeSlotIndex(i)
+										setSelectedTimeBlock(1)
+									}}>
+									<View style={selectedTimeSlotIndex === i && selectedTimeBlock ===1 ? styles.selectedOption : styles.option}>
+										<Text style={selectedTimeSlotIndex === i && selectedTimeBlock ===1 ?{marginLeft: '35%'} : null}>18:00 - 18:30</Text>
+										{selectedTimeSlotIndex === i && selectedTimeBlock ===1 ? <Image
+											style={{ marginLeft: '20%',
+												borderRadius: 50,
+												height: 50,
+												width: 50,
+												backgroundColor: 'black',
+												padding: 0
+												}}
+											source={require('../assets/img/tick.jpg')}></Image> : null
+										}
+									</View>
+								</TouchableOpacity>
+								<TouchableOpacity onPress={() => {
+										setSelectedTimeSlotIndex(i)
+										setSelectedTimeBlock(2)
+									}}>	
+									<View style={selectedTimeSlotIndex === i && selectedTimeBlock ===2 ? styles.selectedOption : styles.option}>
+									<Text style={selectedTimeSlotIndex === i && selectedTimeBlock ===2 ?{marginLeft: '35%'} : null}>19:00 - 19:30</Text>
+									{selectedTimeSlotIndex === i && selectedTimeBlock ===2 ? <Image
+										style={{ marginLeft: '20%',
+											borderRadius: 50,
+											height: 50,
+											width: 50,
+											backgroundColor: 'black',
+											}}
+										source={require('../assets/img/tick.jpg')}></Image> : null
+									}
+									</View>
+								</TouchableOpacity>	
+								<TouchableOpacity onPress={() => {
+									setSelectedTimeSlotIndex(i)
+									setSelectedTimeBlock(3)
+								}}>
+									<View style={selectedTimeSlotIndex === i && selectedTimeBlock ===3 ? styles.selectedOption : styles.option}>
+									<Text style={selectedTimeSlotIndex === i && selectedTimeBlock ===3 ?{marginLeft: '35%'} : null}>20:00 - 20:30</Text>
+									{selectedTimeSlotIndex === i && selectedTimeBlock ===3 ? <Image
+										style={{ marginLeft: '20%',
+											borderRadius: 50,
+											height: 50,
+											width: 50,
+											backgroundColor: 'black',
+											}}
+										source={require('../assets/img/tick.jpg')}></Image> : null
+									}
+									</View>
+								</TouchableOpacity>	
+	
 							</View>
 						)
 					})}
@@ -157,6 +204,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderRadius: 50,
 		marginBottom: 10,
+
 	},
 	main: {
 		padding: 20,
@@ -179,5 +227,17 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginLeft: 10,
 		marginTop: 5,
+	},
+	selectedOption: {
+		backgroundColor: '#fff',
+		padding: 15,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 50,
+		marginBottom: 10,
+		borderWidth: 3,
+		borderColor: '#38D6CA',
+		flexDirection: "row",
+
 	}
 })

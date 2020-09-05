@@ -15,7 +15,7 @@ function CustomDrawer(props) {
 				<MCI name="close" size={25} style={styles.close} />
 			</TouchableOpacity>
 			<View style={styles.profile}>
-				<Text>Lorem Ipsum</Text>
+				<Text style={{fontSize: 22}}>הודעות</Text>
 				{/* <View style={styles.photo}> */}
 				<Image
 					style={styles.photo}

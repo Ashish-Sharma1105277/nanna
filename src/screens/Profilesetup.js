@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import {
-	ImageBackground,
 	View,
 	Text,
 	StyleSheet,
 	Image,
 	TextInput,
-	TouchableOpacity
+	TouchableOpacity,
+	KeyboardAvoidingView,
+	ScrollView
 } from 'react-native'
 
-import Button from '../components/Button'
 import RNPickerSelect from 'react-native-picker-select'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
-import { Picker } from '@react-native-community/picker'
+// import { Picker } from '@react-native-community/picker'
 import { Dialog } from 'react-native-simple-dialogs'
 import Ion from 'react-native-vector-icons/Ionicons'
 
@@ -21,7 +21,14 @@ class Profilesetup extends Component {
 	  super(props);
 	  
 	  this.state = {
-		showDialogue: false
+		showDialogue: false,
+		addFamily: false,
+		fullName: '',
+		dateOfBirth: '',
+		familyMember: {
+			firstName: '',
+			date: ''
+		}
 	  };
 	}
 	render() {
@@ -90,10 +97,10 @@ class Profilesetup extends Component {
 						</TouchableOpacity>
 					</View>
 				</Dialog>
-				<ImageBackground
-					source={require('../assets/img/yellow.png')}
-					style={styles.image}>
-					<Text style={styles.text}>Lorem Ipsum Title</Text>
+				<ScrollView>
+
+				<KeyboardAvoidingView behavior='padding' style={styles.container}>
+					<Text style={styles.text}>יצירת המשפחה שלי</Text>
 					<View style={{ flexDirection: 'row', marginTop: '15%' }}>
 						<View style={{ flexDirection: 'column', width: '35%' }}>
 							<MCI
@@ -114,42 +121,102 @@ class Profilesetup extends Component {
 								size={40}></MCI>
 						</View>
 					</View>
+					<Text style={styles.text}>אני (אמא </Text>
 
-					<Text style={styles.text}>Lorem Ipsum </Text>
-					<View style={{ marginTop: '15%' }}></View>
-					<TextInput value="Lorem" style={styles.input} />
-					<TextInput value="Lorem" style={styles.input} />
+						{   this.state.addFamily === false ?
+							<View style={{ marginTop: '10%' }}>
+								<TextInput style={styles.input} value={this.state.fullName} onChangeText={(fullName) => this.setState({ fullName })} placeholder='אימייל'/>
+								<TextInput style={styles.input} value={this.state.dateOfBirth} onChangeText={(dateOfBirth) => this.setState({ dateOfBirth })} placeholder='אימייל'/>
+							 </View>
+							: null
+						}	 
 					<View style={styles.input}>
 						<RNPickerSelect
 							placeholder={{}}
 							onValueChange={(value) => console.log(value)}
-							items={[{ label: 'Lorem', value: 'Lorem' }]}
+							items={[{ label: 'רווקה', value: 'Lorem' }]}
 						/>
 					</View>
+					{
+						this.state.addFamily == true ? 
+						<View>
+							<View style={{ flexDirection: 'row', marginTop: '15%' }}>
+								<View style={{ flexDirection: 'column', width: '35%' }}>
+									<MCI
+										style={{ alignSelf: 'flex-end', paddingTop: 20 }}
+										name="chevron-left"
+										size={40}></MCI>
+								</View>
+								<View style={{ flexDirection: 'column', width: '30%' }}>
+									<Image
+										style={{ alignSelf: 'center' }}
+										source={require('../assets/img/prof.png')}></Image>
+								</View>
+								<View
+									style={{ flexDirection: 'column', width: '35%', paddingTop: 20 }}>
+									<MCI
+										style={{ alignSelf: 'flex-start' }}
+										name="chevron-right"
+										size={40}></MCI>
+								</View>
+							</View>
+							<Text style={{textAlign: 'center',fontSize: 18,marginTop: 20 }}>Lשרה אימנו </Text>
+
+							<View style={{ marginTop: '10%' }}>
+								<View>
+									<TextInput style={styles.input} value={this.state.familyMember.fullName} onChangeText={(fullName) => this.setState({ ...this.state.familyMember,fullName: fullName })} placeholder='אימייל'/>
+								<TextInput style={styles.input} value={this.state.familyMember.Dob} onChangeText={(date) => this.setState({ ...this.state.familyMember, date: date })} placeholder='אימייל'/>
+								</View>
+							</View> 
+						</View>	: null
+					}
 					<View style={{ flexDirection: 'row', marginTop: '10%' }}>
 					<View style={{ flexDirection: 'column', width: '20%' }}>
-						<Image
-							style={{ alignSelf: 'center' }}
-							source={require('../assets/img/prof.png')}>
-						</Image>	
+						<TouchableOpacity onPress= { () => {
+							this.setState ({
+								addFamily: true
+							})
+						}}>
+							<Image
+								style={{ alignSelf: 'center' }}
+								source={require('../assets/img/prof.png')} />
+						</TouchableOpacity>	
 					</View>
 					<View style={{ flexDirection: 'column', width: '20%' }}>
+						<TouchableOpacity onPress= { () => {
+							this.setState ({
+								addFamily: true
+							})
+						}}>
 						<Image
 							style={{ alignSelf: 'center' }}
 							source={require('../assets/img/prof.png')}>
-						</Image>	
+						</Image>
+						</TouchableOpacity>	
 					</View>
 					<View style={{ flexDirection: 'column', width: '20%' }}>
-						<Image
-							style={{ alignSelf: 'center' }}
-							source={require('../assets/img/prof.png')}>
-						</Image>	
+						<TouchableOpacity onPress= { () => {
+							this.setState ({
+								addFamily: true
+							})
+						}}>
+							<Image
+								style={{ alignSelf: 'center' }}
+								source={require('../assets/img/prof.png')}>
+							</Image>
+						</TouchableOpacity>	
 					</View>
 					<View style={{ flexDirection: 'column', width: '20%' }}>
+						<TouchableOpacity onPress= { () => {
+							this.setState ({
+								addFamily: true
+							})
+						}}>
 						<Image
 							style={{ alignSelf: 'center' }}
 							source={require('../assets/img/prof.png')}>
-						</Image>	
+						</Image>
+						</TouchableOpacity>	
 					</View>
 					</View>	 		
 			
@@ -172,11 +239,12 @@ class Profilesetup extends Component {
 											color: '#000',
 										},
 									]}>
-									<Text style={{ color: '#000' }}>Lorem Ipsum</Text>
+									<Text style={{ color: '#000' }}>צור משפחה וקבל עזרה</Text>
 								</View>
 							</TouchableOpacity>
 					</View>
-				</ImageBackground>
+				</KeyboardAvoidingView>	
+				</ScrollView>
 			</View>
 		)
 	}	
@@ -188,23 +256,19 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		flexDirection: 'column',
+		alignItems: 'center',
+    	justifyContent: 'flex-start',
+		backgroundColor: '#FFFDD2'
 	},
 	footer: {
-		position: 'absolute',
-		bottom: 30,
-		alignSelf: 'center',
+		paddingTop: '5%'
 	},
 	image: {
-		flex: 1,
-		resizeMode: 'cover',
-
-		alignItems: 'center',
-		paddingBottom: 40,
+		marginTop: 20
 	},
 	input: {
 		height: 40,
-		width: '90%',
+		width: 350,
 		backgroundColor: '#FAFAFA',
 		borderRadius: 30,
 		marginTop: 20,

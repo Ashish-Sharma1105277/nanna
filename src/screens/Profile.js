@@ -35,13 +35,13 @@ class Profile extends Component {
          			 onChangeText={(username) => this.setState({ username })} placeholder='אימייל'/>
 					<TextInput style={styles.input} value={this.state.password}
           			onChangeText={(password) => this.setState({ password })} placeholder='סיסמא'/>
-					{/* <View style={styles.input}>
+					<View style={styles.input}>
 						<RNPickerSelect
 							placeholder={{}}
 							onValueChange={(value) => console.log(value)}
 							items={[{ label: 'Football', value: 'football' }]}
 						/>
-					</View> */}
+					</View>
 					<View style={styles.footer}>
 						<Button
 							onPress={this.login}
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 		
 	},
 	footer: {
-		paddingTop: '50%'
+		paddingTop: '45%'
 	},
 	image: {
 		marginTop: 20

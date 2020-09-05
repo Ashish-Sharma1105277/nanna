@@ -38,7 +38,7 @@ class SliderScreen extends Component {
 		this.props.navigation.navigate('Chat')
 	}
 	videoSchedule = () => {
-		this.props.navigation.navigate('Schedule')
+		this.props.navigation.navigate('ProfileDetail')
 	}
 	
 	changeSliderActiveCard (item) {
